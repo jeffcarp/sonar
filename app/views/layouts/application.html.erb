@@ -1,14 +1,198 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Thecolbyecho</title>
+  <title>The Colby Echo</title>
+  <%
+=begin
+echo meta('Content-type', 'text/html; charset=utf-8', 'equiv');
+
+echo link_tag(''.base_url().'public/images/favicon.ico', 'shortcut icon', 'image/ico');
+
+$links = array(
+          'public/css/front-min-3-7.css',
+          'public/css/front_facing/'.$controller.'.css'
+);
+foreach($links as $l):
+	echo link_tag($l);
+endforeach;
+=end
+%>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="ocean">
+  <div>
+    
+<div id="header">
+	<div id="top">
+		
+		<a href="/" style="background-image:url('<?=base_url()?>/public/images/front_facing/thecolbyecho-white.png');" alt="The Colby Echo" title="The Colby Echo" id="logo"></a>
+		
+		<span id="subtitle">Colby College's student run newspaper since 1877</span>
 
-<%= yield %>
+		<div class="weather">
 
+			<?
+			$counter = 0;
+			foreach ($forecast->simpleforecast->forecastday as $day):
+				?>
+				<div class="day">
+				
+					<div class="temperature">
+						
+						<img src="/public/images/weather_thumbs/<?=getWeatherImage($day->icon)?>" />
+						
+						<!--<img src="<?=$day->icons->icon_set[9]->icon_url?>" />-->
+						
+						<span class="high_sign">H</span>
+						<span class="high_deg"><?=$day->high->fahrenheit?></span>
+						/
+						<span class="low_sign">L</span>
+						<span class="low_deg"><?=$day->low->fahrenheit?></span>
+					
+					</div>
+					<?
+					if ($day->date->weekday == 'Saturday'
+				     || $day->date->weekday == 'Sunday'):
+						?>
+						<div class="weekday"><strong><?=$day->date->weekday?></strong></div>
+						<?
+					else:
+						?>
+						<div class="weekday"><?=$day->date->weekday?></div>
+						<?
+					endif;
+					?>
+				
+				</div>
+				<?
+				if($counter >= 3) break;
+				$counter++;
+			endforeach;
+			?>
+			
+		</div>
+	</div>
+
+	<div id="nav_wrapper">
+	<div id="nav">
+		<ul id="sections">	
+			<?
+			$head_li_array = array(
+	       		'HOME' => '',
+	       		'NEWS' => 'news',
+	       		'OPINION' => 'opinion',
+	       		'A&E' => 'ae',
+	       		'FEATURES' => 'features',
+	       		'SPORTS' => 'sports',
+	       		'VIDEOS' => 'videos',
+	       		'TOPICS' => 'topics',
+	       		'BLOG' => 'blog'
+	       	);
+	           
+			foreach($head_li_array as $key=>$value) {
+				$arr = explode('/', uri_string());
+				?>
+				<li <? if($arr[0] == $value){ ?>class="selected"<? } ?> >
+					<a href="/<?=$value?>"><?=$key?></a>
+				</li>
+				<?
+			}
+			?>
+				<li>
+					<form action="http://www.google.com/cse" id="cse-search-box" target="_blank">
+					  <div>
+					    <input type="hidden" name="cx" value="015830191621256557616:14nhnql535o" />
+					    <input type="hidden" name="ie" value="UTF-8" />
+					    <input type="text" name="q" style="width:120px;" />
+					    <!--<input type="submit" name="sa" value="Search" />-->
+					  </div>
+					</form>
+					<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&lang=en"></script>
+				</li>
+		</ul>
+	</div>
+	</div>
+</div>
+    <div class="continent clearfix">
+    
+      <%= yield %>
+    
+    </div>
+
+
+<div class="footer">
+	<div class="footer_wrap">
+
+	    <div class="floatingFooterColumn">
+			<h1>About Us</h1>
+			<p>The Colby Echo is a weekly newspaper published by the Students of Colby College since 1877.</p>
+			<ul id="team">
+				<li><a href="/about">About The Echo</a></li>
+				<li><a href="/people">The Echo Team</a></li>
+			</ul>
+		</div>
+
+		<div class="floatingFooterColumn">
+			<h1>Print Departments</h1>
+			<ul>
+				<li><a href="/news">News</a></li>
+				<li><a href="/local">Local News</a></li>
+				<li><a href="/opinion">Opinion</a></li>
+				<li><a href="/ae">Arts & Entertainment</a></li>
+				<li><a href="/features">Features</a></li>
+				<li><a href="/sports">Sports</a></li>
+			</ul>
+		</div>
+
+		<!--WEB EXCLUSIVE-->
+		<div class="floatingFooterColumn">
+			<h1>Web Exclusive</h1>
+			<ul>
+				<li><a href="/bubble">The Bubble</a></li>
+				<li><a href="/video">Video</a></li>
+				<!--<li><a href="/blogs/">Blog Directory</a></li>-->
+				<!--<li><a href="/archive">Web Archive</a></li>-->
+			</ul>
+		</div>
+
+		<!--CONTACT-->
+		<div class="floatingFooterColumn">
+			<h1>Contact Us</h1>
+			<ul>
+				<li><a href="/contact">Contact Info</a></li>
+				<!--<li><a href="/contact/opinions">Opinions</a></li>-->
+				<li><a href="/about/advertising">Advertising</a></li>
+				<!--<li><a href="/subscribe">Subscriptions</a></li>-->
+				<li><a href="http://twitter.com/thecolbyecho">@thecolbyecho</a></li>
+			</ul>
+		</div>
+
+		<div class="very_bottom">
+			<p>The Colby Echo website is engineered and maintained by the <a href="/about/colophon">Echo Tech Team.</a>  
+			All Code and Content Copyright <?=date('Y')?>.
+			</p>
+		</div>
+
+	</div>
+</div>
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17170263-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+  
+  </div>
 </body>
 </html>
