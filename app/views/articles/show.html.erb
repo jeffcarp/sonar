@@ -1,5 +1,28 @@
-<p id="notice"><%= notice %></p>
+<div class="grids">
+  <div class="grid-12 department-header">
+    <h1>Department Name</h1>
+  </div>
+</div>
 
+<div class="grids">
+  <div class="grid-8">
+    <h1><%= @article.headline %></h1>
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+    <div class="info">
+      <span>by pupu-chan</span>
+      <span>on May 16, 2013</span>
+    </div>
+
+    <article class="print">
+      <!-- TODO: big photo (if indicated) with attribution/source -->
+      <!-- TODO: social buttons -->
+      <!-- TODO: topics (maybe sidebar?) -->
+      <!-- TODO: more photos -->
+      <%= @article.copy %>
+      <!-- TODO: below author, more articles by them -->
+    </article>
+  </div>
+  <div class="grid-4">
+    aside.
+  </div>
+</div>
