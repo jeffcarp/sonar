@@ -50,7 +50,7 @@ endforeach;
       </div>
     </div>
   </header>
-  <div id="content">
+  <div id="content" class="<%= params[:controller] %>">
     <%= yield %>
   </div>
   <%= render partial: 'layouts/footer' %>

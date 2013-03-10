@@ -1,0 +1,16 @@
+<section class="department-header">
+  <h2><%= @department.name %></h2>
+</section>
+
+<ul class="articles">
+  <% @department.articles.each do |a| %>
+    <li>
+      <h3><%= link_to a.headline, a %></h3>
+      <div class="info">by ruprect</div>
+      <p><%= a.deck %></p> 
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Edit', edit_department_path(@department) %> |
+<%= link_to 'Back', departments_path %>

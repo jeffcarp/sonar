@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130309083725) do
+ActiveRecord::Schema.define(:version => 20130310022400) do
 
   create_table "articles", :force => true do |t|
     t.string   "headline"
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(:version => 20130309083725) do
     t.boolean  "bigphoto"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+  end
+
+  create_table "departments", :force => true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.string   "outlet"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end
