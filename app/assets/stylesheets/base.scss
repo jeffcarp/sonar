@@ -1,11 +1,20 @@
+@mixin helvetica {
+  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+@mixin georgia {
+  font-family: "Georgia", serif;
+}
+
 body {
   background-color: #ddd;
+  @include helvetica;
 }
 
 #content {
   max-width: 945px;
   min-height: 500px;
   margin: 36px auto;
+  padding: 18px;
   background-color: white;
   box-shadow: 0 0 3px #888;
   border-top: solid 5px #0D4A95;
@@ -37,13 +46,6 @@ header {
     }
   }
 }
-
-.department-header {
-  padding: 24px 0;
-  margin: 0 0 24px;
-  border-bottom: solid 1px #ccc;
-}
-
 
 .weather {
 	float: right;
