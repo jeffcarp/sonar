@@ -32,18 +32,7 @@ endforeach;
 
     <div id="nav_wrapper"> <div id="nav">
         <ul id="sections">
-          <% sections = {
-            'HOME' => '',
-            'NEWS' => 'news',
-            'OPINION' => 'opinion',
-            'A&E' => 'ae',
-            'FEATURES' => 'features',
-            'SPORTS' => 'sports',
-            'VIDEOS' => 'videos',
-            'TOPICS' => 'topics',
-            'BLOG' => 'blog'
-          } %>
-          <% sections.each do |key, value| %>
+          <% header_sections.each do |key, value| %>
             <li>
               <a href="/<%= value %>"><%= key %></a>
             </li>

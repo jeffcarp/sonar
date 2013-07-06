@@ -1,14 +1,23 @@
-<section class="department-header">
-  <h2>Department Name</h2>
-</section>
 
 <div class="grids">
+
+  <div class="grid-12">
+    <h2><%= link_to @article.department.name, @article.department %></h2>
+  </div>
+
   <div class="grid-8 article">
     <h1><%= @article.headline %></h1>
 
     <div class="info">
       <span>by pupu-chan</span>
       <span>on May 16, 2013</span>
+    </div>
+
+    <div class="image">
+      <img src="http://placekitten.com/700/400" />
+      <div class="caption">
+        This picture is great.
+      </div>
     </div>
 
     <article class="print">
@@ -20,9 +29,16 @@
       <!-- TODO: below author, more articles by them -->
     </article>
   </div>
+
   <div class="grid-4">
-    <section style="padding:12px;border:solid 1px #ccc;">
-      sample sidebar
-    </section>
+    <aside>
+      <section class="pf mfb">
+        sample sidebar
+      </section>
+      <section class="pf mfb">
+        <%= link_to "edit this article", edit_article_path(@article) %>
+      </section>
+    </aside>
   </div>
+
 </div>
