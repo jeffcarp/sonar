@@ -2,5 +2,11 @@
   font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
 @mixin serif {
-  font-family: "Georgia", serif;
+  font-family: "PT Serif", "Georgia", serif;
 }
+
+@mixin standard-article {
+  font-size: 15px;
+  line-height: 26px;
+  @include serif;
+} 
