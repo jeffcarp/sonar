@@ -7,9 +7,16 @@
 /* Elements
 ==================== */
 
-ul {
-    list-style: none;
-}
+a,
+a:active { color: #116ce8; }
+a:hover { color: #116ce8; }
+
+
+ul { list-style: none; }
+
+h1 { font-size: 36px; }
+h2 { font-size: 24px; }
+h3 { font-size: 18px; }
 
 
 /* One-off Elements
@@ -20,7 +27,12 @@ aside section {
 }
 
 
+/* Layout Utility 
+==================== */
+
 .center { text-align: center; }
+.full { width: 100%; }
+
 
 /* Spacing Utility 
 ==================== */

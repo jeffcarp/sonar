@@ -2,7 +2,7 @@
 <div class="grids">
 
   <div class="grid-12">
-    <h2><%= link_to @article.department.name, @article.department %></h2>
+    <h2 class="mhy"><%= link_to @article.department.name, '/'+@article.department.slug %></h2>
   </div>
 
   <div class="grid-8 article">
@@ -13,7 +13,7 @@
       <span>on May 16, 2013</span>
     </div>
 
-    <div class="image">
+    <div class="image mfb">
       <img src="http://placekitten.com/700/400" />
       <div class="caption">
         This picture is great.
@@ -25,7 +25,7 @@
       <!-- TODO: social buttons -->
       <!-- TODO: topics (maybe sidebar?) -->
       <!-- TODO: more photos -->
-      <%= @article.copy %>
+      <%= simple_format @article.copy %>
       <!-- TODO: below author, more articles by them -->
     </article>
   </div>

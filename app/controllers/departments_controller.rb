@@ -19,6 +19,9 @@ class DepartmentsController < ApplicationController
       @department = Department.find(params[:id])
     end
 
+    @current_articles = @department.articles.limit(8).order('id desc')
+    @older_articles = @department.articles.limit(8).offset(8).order('id desc')
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @department }

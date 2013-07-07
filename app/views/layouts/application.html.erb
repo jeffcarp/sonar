@@ -34,7 +34,7 @@ endforeach;
         <ul id="sections">
           <% header_sections.each do |key, value| %>
             <li>
-              <a href="/<%= value %>"><%= key %></a>
+              <a href="/<%= value %>"><%= key.upcase %></a>
             </li>
           <% end %>
         </ul>
@@ -42,7 +42,9 @@ endforeach;
     </div>
   </header>
   <div id="content" class="<%= params[:controller] %>">
-    <%= yield %>
+    <div class="wrap">
+      <%= yield %>
+    </div>
   </div>
   <%= render partial: 'layouts/footer' %>
 </body>
