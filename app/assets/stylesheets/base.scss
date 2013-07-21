@@ -25,6 +25,17 @@ body {
 header {
 	background-color: #0a4089;
 
+  .admin {
+    background-color: rgba(1, 1, 1, 0.3);
+    a {
+      color: white;
+      font-weight: bold;
+      &:hover {
+        color: white - #111;
+      }
+    }
+  }
+
   #top {
     width: 945px;
     margin: 0 auto;

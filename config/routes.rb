@@ -1,6 +1,7 @@
 Thecolbyecho::Application.routes.draw do
   resources :departments
   resources :articles
+  resources :issues
 
   get 'news'     => 'departments#show', :slug => 'news'
   get 'opinion'  => 'departments#show', :slug => 'opinion'
