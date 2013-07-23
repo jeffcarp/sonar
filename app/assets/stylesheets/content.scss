@@ -1,3 +1,4 @@
+@import "mixins.scss";
 
 /* Reset 
 ==================== */
@@ -26,6 +27,11 @@ aside section {
   border: solid 1px #ccc;
 }
 
+/* Fonts 
+==================== */
+.serif {
+  @include serif;
+}
 
 /* Layout Utility 
 ==================== */

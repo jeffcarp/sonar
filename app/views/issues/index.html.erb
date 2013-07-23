@@ -1,5 +1,17 @@
 <h1>Issues</h1>
 
-<% @issues.each do |issue| %>
-  <p><%= issue.inspect %></p>
-<% end %>
+<div class="grids">
+  <% @issues.each do |issue| %>
+    <div class="grid-12">
+      <h2><%= issue.name %></h2>
+      <p><%= issue.publish_date %></p>
+      <p>Edition: <%= issue.edition %></p>
+      <p>Volume: <%= issue.volume %></p>
+    </div>
+    <% issue.articles.each do |article| %>
+      <div class="grid-3">
+        <span><%= article.headline %></span>
+      </div>
+    <% end %>
+  <% end %>
+</div>

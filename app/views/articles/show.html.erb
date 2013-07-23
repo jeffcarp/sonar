@@ -2,15 +2,16 @@
 <div class="grids">
 
   <div class="grid-12">
-    <h2 class="mhy"><%= link_to @article.department.name, '/'+@article.department.slug %></h2>
+    <h1 class="serif mfy"><%= @article.headline %></h1>
   </div>
 
   <div class="grid-8 article">
-    <h1><%= @article.headline %></h1>
 
     <div class="info">
+      <span><strong><%= link_to @article.department.name, '/'+@article.department.slug %></strong></span>
       <span>by pupu-chan</span>
-      <span>on May 16, 2013</span>
+      <span>Issue X</span>
+      <span>Edition X</span>
     </div>
 
     <div class="image mfb">
@@ -33,7 +34,27 @@
   <div class="grid-4">
     <aside>
       <section class="pf mfb">
-        sample sidebar
+        <h4>Other articles in this Issue</h4>
+        <p>Issue publish date, edition, volume</p>
+      </section>
+      <section class="pf mfb">
+        <h4>Articles with these topics</h4>
+        <ul>
+          <li class="mfb">
+            <h5><a href="/topics/bro">Bro</a></h5>
+            <ul>
+              <li><a href="">An article about <strong>Bro</strong></a></li>
+              <li><a href="">Another article about <strong>Bro</strong></a></li>
+            </ul>
+          </li>
+          <li class="mfb">
+            <h5><a href="/topics/swimming">Swimming</a></h5>
+            <ul>
+              <li><a href="">An article about <strong>Swimming</strong></a></li>
+              <li><a href="">Another article about <strong>Swimming</strong></a></li>
+            </ul>
+          </li>
+        </ul>
       </section>
       <section class="pf mfb">
         <%= link_to "edit this article", edit_article_path(@article) %>
