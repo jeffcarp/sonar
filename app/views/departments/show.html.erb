@@ -1,0 +1,20 @@
+<div class="grids">
+
+  <div class="grid-12">
+    <h2 class="mhy"><%= link_to @department.name, '/'+@department.slug %></h2>
+  </div>
+
+  <% @current_articles.each do |a| %>
+    <div class="grid-4">
+      <div class="mhb">
+        <a href="/articles/<%= a.id.to_s  %>">
+          <img src="http://placekitten.com/300/200" class="full" />
+        </a>
+        <h3><%= link_to a.headline, a %></h3>
+        <div class="info">by ruprect</div>
+        <p><%= a.deck %></p> 
+      </div>
+    </div>
+  <% end %>
+
+</div>

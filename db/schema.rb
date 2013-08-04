@@ -11,19 +11,39 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130309083725) do
+ActiveRecord::Schema.define(:version => 20130721200010) do
 
-  create_table "articles", :force => true do |t|
-    t.string   "headline"
-    t.string   "deck"
+  create_table "articles", :id => false, :force => true do |t|
+    t.integer  "id",            :null => false
+    t.text     "headline"
+    t.text     "deck"
     t.integer  "department_id"
     t.integer  "issue_id"
     t.text     "copy"
     t.boolean  "public"
-    t.string   "slug"
+    t.text     "slug"
     t.boolean  "bigphoto"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.integer  "topic_id"
+  end
+
+  create_table "departments", :force => true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.string   "outlet"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "issues", :force => true do |t|
+    t.string   "name"
+    t.boolean  "public"
+    t.integer  "volume"
+    t.integer  "edition"
+    t.date     "publish_date"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
 end

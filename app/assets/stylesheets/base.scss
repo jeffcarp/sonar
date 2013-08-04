@@ -1,3 +1,5 @@
+@import "mixins.scss";
+
 @mixin helvetica {
   font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
@@ -6,22 +8,33 @@
 }
 
 body {
-  background-color: #ddd;
   @include helvetica;
+	background-color: #020c1a;
 }
 
 #content {
+  background-color: white;
+}
+
+#main {
   max-width: 945px;
   min-height: 500px;
-  margin: 36px auto;
-  padding: 18px;
-  background-color: white;
-  box-shadow: 0 0 3px #888;
-  border-top: solid 5px #0D4A95;
+  margin: 0 auto;
 }
 
 header {
 	background-color: #0a4089;
+
+  .admin {
+    background-color: rgba(1, 1, 1, 0.3);
+    a {
+      color: white;
+      font-weight: bold;
+      &:hover {
+        color: white - #111;
+      }
+    }
+  }
 
   #top {
     width: 945px;
@@ -204,7 +217,6 @@ header {
 
 
 footer {
-	background-color: #020c1a;
 	border-top: solid 2px #bbb;
 	font-size: 12px;
 	color: white;
@@ -216,7 +228,6 @@ footer {
     margin: 0 0 12px;
   }
   ul {
-    list-style: none;
     margin: 0 0 18px;
     li {
       margin: 0 0 6px;

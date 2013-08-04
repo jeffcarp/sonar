@@ -12,5 +12,7 @@
  *= require reset
  *= require grid
  *= require base
+ *= require content 
  *= require articles
+ *= require departments
  */

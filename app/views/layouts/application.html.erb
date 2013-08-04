@@ -20,9 +20,21 @@ endforeach;
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+
+  <link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 </head>
 <body>
   <header>
+    <div class="admin">
+      <div class="wrap">
+        <div class="grid">
+          <div class="grid-2">
+            <a href="/issues">Issues</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div id="top">
       <a href="/" style="background-image:url('<%= image_path('logo-white.png') %>');" alt="The Colby Echo" title="The Colby Echo" id="logo"></a>
       <span id="subtitle">Colby College's student run newspaper since 1877</span>
@@ -30,28 +42,19 @@ endforeach;
 
     <div id="nav_wrapper"> <div id="nav">
         <ul id="sections">
-          <% sections = {
-            'HOME' => '',
-            'NEWS' => 'news',
-            'OPINION' => 'opinion',
-            'A&E' => 'ae',
-            'FEATURES' => 'features',
-            'SPORTS' => 'sports',
-            'VIDEOS' => 'videos',
-            'TOPICS' => 'topics',
-            'BLOG' => 'blog'
-          } %>
-          <% sections.each do |key, value| %>
+          <% header_sections.each do |key, value| %>
             <li>
-              <a href="/<%= value %>"><%= key %></a>
+              <a href="/<%= value %>"><%= key.upcase %></a>
             </li>
           <% end %>
         </ul>
       </div>
     </div>
   </header>
-  <div id="content">
-    <%= yield %>
+  <div id="content" class="<%= params[:controller] %>">
+    <div class="wrap">
+      <%= yield %>
+    </div>
   </div>
   <%= render partial: 'layouts/footer' %>
 </body>
