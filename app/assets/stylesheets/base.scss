@@ -31,6 +31,7 @@ header {
       color: white;
       font-weight: bold;
       &:hover {
+        background-color: rgba(1, 1, 1, 0.2);
         color: white - #111;
       }
     }
