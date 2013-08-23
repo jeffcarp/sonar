@@ -1,7 +1,7 @@
 class IssuesController < ApplicationController
 
   def index
-    @issues = Issue.all
+    @issues = Issue.order('publish_date DESC')
   end
 
 end

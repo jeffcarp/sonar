@@ -12,6 +12,46 @@
   <% end %>
 
   <div class="actions">
+    <%= f.label :headline %>
+    <%= f.text_field :headline %>
+  </div>
+
+  <div class="actions">
+    <%= f.label :slug %>
+    <%= f.text_field :slug %>
+  </div>
+
+  <div class="actions">
+    <%= f.label :public %>
+    <%= f.check_box :public %>
+  </div>
+
+  <div class="actions">
+    <%= f.label :bigphoto %>
+    <%= f.check_box :bigphoto %>
+  </div>
+
+  <div class="actions">
+    <%= f.label :issue %>
+    <%= f.collection_select :issue_id, Issue.all, :id, :name %>
+  </div>
+
+  <div class="actions">
+    <%= f.label :department %>
+    <%= f.collection_select :department_id, Department.all, :id, :name %>
+  </div>
+
+  <div class="actions">
+    <%= f.label :deck %>
+    <%= f.text_area :deck %>
+  </div>
+
+  <div class="actions">
+    <%= f.label :copy %>
+    <%= f.text_area :copy %>
+  </div>
+
+  <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>

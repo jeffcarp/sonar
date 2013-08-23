@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: <%= ENV['PG_DB_NAME_DEV'] %> 
+  database: thecolbyecho 
   pool: 5
   password:
   host: localhost
