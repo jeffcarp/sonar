@@ -28,15 +28,12 @@ endforeach;
   <header>
     <div class="admin">
       <div class="wrap pa">
-        <div class="grid">
+        <div class="grids">
           <div class="grid-2">
-            <a href="/issues" class="pf dib">Issues</a>
+            <a href="/issues?volume=<%= Issue.maximum(:volume) %>" class="pf dib">Issues</a>
           </div>
           <div class="grid-2">
-            <a href="/people">People</a>
-          </div>
-          <div class="grid-2">
-            <a href=""></a>
+            <a href="/people" class="pf dib">People</a>
           </div>
           <div class="grid-2">
             <a href=""></a>
@@ -45,7 +42,10 @@ endforeach;
             <a href=""></a>
           </div>
           <div class="grid-2">
-            <a href="">Jeff Carpenter</a>
+            <a href=""></a>
+          </div>
+          <div class="grid-2">
+            <a href="" class="pf dib">Jeff Carpenter</a>
           </div>
         </div>
       </div>

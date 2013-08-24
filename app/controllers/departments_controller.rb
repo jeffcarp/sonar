@@ -20,8 +20,9 @@ class DepartmentsController < ApplicationController
     end
 
     if @department 
-      @current_articles = @department.articles.limit(8).order('id desc')
-      @older_articles = @department.articles.limit(8).offset(8).order('id desc')
+      @issue = Issue.latest_published_issue
+      @current_articles = @department.articles.where('issue_id = ?', @issue.id)
+      @older_articles = @department.articles.where('issue_id = ?', @issue.id)
     else
       redirect_to :root 
     end

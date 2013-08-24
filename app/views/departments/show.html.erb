@@ -1,7 +1,10 @@
 <div class="grids">
 
   <div class="grid-12">
-    <h2 class="mhy"><%= link_to @department.name, '/'+@department.slug %></h2>
+    <div class="mhy">
+      <h2><%= link_to @department.name, '/'+@department.slug %></h2>
+      <div>Published: <%= @issue.publish_date %></div>
+    </div>
   </div>
 
   <% @current_articles.each do |a| %>
