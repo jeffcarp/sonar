@@ -1,17 +1,39 @@
 <h1>Issues</h1>
 
 <div class="grids">
-  <% @issues.each do |issue| %>
-    <div class="grid-12">
-      <h2><%= issue.name %></h2>
-      <p><%= issue.publish_date %></p>
-      <p>Edition: <%= issue.edition %></p>
-      <p>Volume: <%= issue.volume %></p>
-    </div>
-    <% issue.articles.each do |article| %>
-      <div class="grid-3">
-        <span><%= article.headline %></span>
+
+  <div class="grid-8">
+    <div class="mky">
+      <div class="grids">
+        <% @issues.each do |issue| %>
+          <div class="grid-12">
+            <h2><%= issue.name %></h2>
+            <p><%= link_to 'edit', edit_issue_path(issue) %>
+            <p><%= issue.publish_date %></p>
+            <p>Edition: <%= issue.edition %></p>
+            <p>Volume: <%= issue.volume %></p>
+          </div>
+          <% issue.articles.each do |article| %>
+            <div class="grid-3">
+              <span><%= article.headline %></span>
+            </div>
+          <% end %>
+        <% end %>
       </div>
-    <% end %>
-  <% end %>
+    </div>
+  </div>
+
+  <div class="grid-4">
+    <aside class="mky">
+      <section class="pf mfb">
+        <%= link_to 'New Issue', new_issue_path %>
+      </section>
+      <% @volumes.each do |vol| %>
+        <section class="pf mfb">
+          <%= link_to 'Volume '+vol.to_s, '/issues?volume='+vol.to_s %>
+        </section>
+      <% end %>
+    </aside>
+  </div>
+
 </div>
