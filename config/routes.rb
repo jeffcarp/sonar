@@ -1,4 +1,7 @@
 Thecolbyecho::Application.routes.draw do
+  resources :photos
+
+
   resources :departments
   resources :articles
   resources :issues
