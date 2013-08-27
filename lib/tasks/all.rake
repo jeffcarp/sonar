@@ -67,3 +67,27 @@ task :import_photos => :environment do
   end
 end
 
+task :import_articles_photos => :environment do
+  json = File.read '/Users/Jeff/Desktop/sonar_articles_photos.json'
+  articles_photos = JSON.parse json
+  articles_photos.each do |ap|
+    article_id = ap["articlephoto_Article"]
+    photo_id = ap["articlephoto_Photo"]
+    begin
+      article = Article.find(article_id)
+      photo = Photo.find(photo_id)
+    rescue
+      # create stub article?
+      # puts "couldn't find article with id "+article_id.to_s
+      # puts "or couldn't find photo with id "+photo_id.to_s
+    else
+      puts "FOUND BOTH"
+      article.photos << photo
+    end
+  end
+end
+
+task :import_new_articles => :environment do
+  json = File.read '/Users/Jeff/Desktop/sonar_articles.json'
+  articles = JSON.parse json
+end
