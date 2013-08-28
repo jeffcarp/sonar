@@ -4,22 +4,33 @@
 
   <div class="grid-8">
     <div class="mky">
-      <div class="grids">
-        <% @issues.each do |issue| %>
-          <div class="grid-12">
-            <h2><%= issue.name %></h2>
-            <p><%= link_to 'edit', edit_issue_path(issue) %>
-            <p><%= issue.publish_date %></p>
-            <p>Edition: <%= issue.edition %></p>
-            <p>Volume: <%= issue.volume %></p>
+      <% @issues.each do |issue| %>
+        <div class="mob">
+          <h2><%= issue.name %></h2>
+          <% if issue.public %>
+            <div class="bg-green mcy pd fwb">
+              <span class="dib mfr">public</span>
+          <% else %>
+            <div class="bg-orange mcy pd fwb">
+              <span class="dib mfr">not visible</span>
+          <% end %>
+            <span class="dib mfr">not visible</span>
+            <span class="dib mfr"><%= link_to 'edit', edit_issue_path(issue) %></span>
+            <span class="dib mfr"><%= issue.publish_date %></span>
+            <span class="dib mfr">Volume <%= issue.volume %></span>
+            <span class="dib mfr">Edition <%= issue.edition %></span>
           </div>
-          <% issue.articles.each do |article| %>
-            <div class="grid-3">
-              <span><%= article.headline %></span>
+          <% if issue.articles.any? %>
+            <div class="grids">
+              <% issue.articles.each do |article| %>
+                <div class="grid-3">
+                  <span><%= article.headline %></span>
+                </div>
+              <% end %>
             </div>
           <% end %>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
   </div>
 

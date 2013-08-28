@@ -14,12 +14,16 @@
       <span>Edition X</span>
     </div>
 
-    <div class="image mfb">
-      <img src="http://placekitten.com/700/400" />
-      <div class="caption">
-        This picture is great.
+    <% if !@article.photos.empty? %>
+      <div class="image mfb">
+        <img src="https://s3.amazonaws.com/thecolbyecho/<%= @article.photos.first.id.to_s %>.<%= @article.photos.first.extension %>" />
+        <% if @article.photos.first.caption %>
+          <div class="caption">
+            <%= @article.photos.first.caption %>
+          </div>
+        <% end %>
       </div>
-    </div>
+    <% end %>
 
     <article class="print">
       <!-- TODO: big photo (if indicated) with attribution/source -->

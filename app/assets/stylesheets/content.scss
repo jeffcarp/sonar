@@ -33,6 +33,27 @@ aside section {
   @include serif;
 }
 
+/* Font weights
+==================== */
+.fwb { font-weight: bold; }
+.fwn { font-weight: normal; }
+
+/* Text colors 
+==================== */
+.green { color: green; }
+
+/* Background colors 
+==================== */
+[class*='bg-'] {
+  color: white;
+}
+.bg-green { 
+  background-color: green; 
+}
+.bg-orange { 
+  background-color: orange; 
+}
+
 /* Layout Utility 
 ==================== */
 

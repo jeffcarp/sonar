@@ -9,15 +9,32 @@
 
   <% @current_articles.each do |a| %>
     <div class="grid-4">
-      <div class="mhb">
-        <a href="/articles/<%= a.id.to_s  %>">
-          <img src="http://placekitten.com/300/200" class="full" />
-        </a>
-        <h3><%= link_to a.headline, a %></h3>
-        <div class="info">by ruprect</div>
+      <div class="mob">
+        <% if !a.photos.empty? %>
+          <a href="/articles/<%= a.id.to_s  %>">
+            <img src="https://s3.amazonaws.com/thecolbyecho/<%= @article.photos.first.id.to_s %>.<%= @article.photos.first.extension %>" class="full" />
+          </a>
+        <% end %>
+        <h3 class="serif mbb"><%= link_to a.headline, a %></h3>
+        <div class="info mcb">ruprect</div>
         <p><%= a.deck %></p> 
       </div>
     </div>
   <% end %>
+
+</div>
+
+<div class="mot mkb">
+  <h2>Older issues</h2>
+</div>
+
+<div class="grids">
+
+  <div class="grid-4">
+    <div class="">
+      <h4>Issue blah</h4>
+      article
+    </div>
+  </div>
 
 </div>
