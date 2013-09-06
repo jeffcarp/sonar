@@ -1,6 +1,11 @@
 <h1>Editing person</h1>
 
-<%= render 'form' %>
+<div class="grids">
+  <div class="grid-6">
+    <%= render 'form' %>
+    <%= link_to 'Show', @person %> |
+    <%= link_to 'Back', people_path %>
+  </div>
+</div>
 
-<%= link_to 'Show', @person %> |
-<%= link_to 'Back', people_path %>
+

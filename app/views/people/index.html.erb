@@ -1,49 +1,33 @@
 <h1 class="mfb">People</h1>
 
-<!-- TODO: group by access levels (DESC) -->
-
 <div class="grids">
-  <% @people.each do |person| %>
-    <div class="grid-3">
-      <div class="mob">
-        <h3><%= link_to person.name, person %></h3>
-        <div class="mct"><%= person.email %></div>
+
+  <div class="grid-9">
+    <div class="mky">
+      <div class="grids">
+        <% @people.each do |person| %>
+          <div class="grid-4">
+            <div class="mob">
+              <h3><%= link_to person.name, person %></h3>
+              <div class="mct"><%= person.email %></div>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
-  <% end %>
+  </div>
+
+  <div class="grid-3">
+    <aside class="mky">
+      <section class="pf mfb">
+        <span>TODO: Link to instructions and list of people who want to join</span>
+      </section>
+      <% @groups.each do |group| %>
+        <section class="pf mfb">
+          <%= link_to group.capitalize, '/people?group='+group %>
+        </section>
+      <% end %>
+    </aside>
+  </div>
+
 </div>
-
-
-<!--
-<table>
-  <tr>
-    <th>Email</th>
-    <th>Photo</th>
-    <th>Name</th>
-    <th>Slug</th>
-    <th>Position</th>
-    <th>Year</th>
-    <th>Bio</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @people.each do |person| %>
-  <tr>
-    <td><%= person.email %></td>
-    <td><%= person.photo_id %></td>
-    <td><%= person.name %></td>
-    <td><%= person.slug %></td>
-    <td><%= person.position %></td>
-    <td><%= person.year %></td>
-    <td><%= person.bio %></td>
-    <td><%= link_to 'Show', person %></td>
-    <td><%= link_to 'Edit', edit_person_path(person) %></td>
-    <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
--->
