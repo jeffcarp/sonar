@@ -65,6 +65,24 @@ aside section {
 .db { display: block; } 
 .di { display: inline; } 
 
+/* Forms 
+==================== */
+
+label {
+  font-size: 14px;
+  margin: 0 0 .2em;
+  display: block;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea { 
+  font-size: 14px;
+  padding: .2em;
+  width: 100%;
+}
+
 /* Spacing Utility 
 ==================== */
 

@@ -1,5 +1,20 @@
-<h1>Listing people</h1>
+<h1 class="mfb">People</h1>
 
+<!-- TODO: group by access levels (DESC) -->
+
+<div class="grids">
+  <% @people.each do |person| %>
+    <div class="grid-3">
+      <div class="mob">
+        <h3><%= link_to person.name, person %></h3>
+        <div class="mct"><%= person.email %></div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+<!--
 <table>
   <tr>
     <th>Email</th>
@@ -31,5 +46,4 @@
 </table>
 
 <br />
-
-<%= link_to 'New Person', new_person_path %>
+-->
