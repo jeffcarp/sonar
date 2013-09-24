@@ -1,0 +1,62 @@
+
+<div class="grids pky">
+
+  <!-- Huge breaking news -->
+  <% if @breaking %>
+    <div class="grid-12">
+      <div class="ppb">
+        <div class="fwb">
+          <%= link_to @breaking.article.department.name.upcase, @breaking.article.department %>
+        </div>
+        <h1 class="serif mcb"
+            style="font-size:28px;"
+          ><%= link_to @breaking.article.headline, @breaking.article, class: "dark" %></h1>
+        <p><%= @breaking.article.deck %></p>
+      </div>
+    </div>
+  <% end %>
+
+  <!-- Featured articles -->
+  <div class="grid-9">
+
+    <div class="grids">
+
+      <!-- Secondary featured articles -->
+      <div class="grid-4">
+        <% @secondary.each do |l| %>
+          <div class="pfb">
+            <div class="fwb pbb">
+              <%= link_to l.article.department.name.upcase, l.article.department %>
+            </div>
+            <h3 class="serif mcb"
+                style="font-size:18px;color:#333;"
+              ><%= link_to l.article.headline, l.article, class: "dark" %></h3>
+          </div>
+        <% end %>
+      </div>
+
+      <!-- Primary featured article -->
+      <div class="grid-8">
+        <% if @primary %>
+          <div class="ppb">
+            <div class="fwb">
+              <%= link_to @primary.article.department.name.upcase, @primary.article.department %>
+            </div>
+            <h1 class="serif mcb"
+                style="font-size:18px;"><%= @primary.article.headline %></h1>
+            <p><%= @primary.article.deck %></p>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+    
+  </div>
+
+  <div class="grid-3">
+    <div class="">
+      <h4>Sidebar</h4>
+    </div>
+  </div>
+
+</div>

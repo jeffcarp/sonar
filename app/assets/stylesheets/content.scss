@@ -12,13 +12,11 @@ a,
 a:active { color: #116ce8; }
 a:hover { color: #116ce8; }
 
-
 ul { list-style: none; }
 
 h1 { font-size: 36px; }
 h2 { font-size: 24px; }
 h3 { font-size: 18px; }
-
 
 /* One-off Elements
 ==================== */
@@ -41,6 +39,18 @@ aside section {
 /* Text colors 
 ==================== */
 .green { color: green; }
+.dark { color: #333; }
+
+/* Link colors 
+==================== */
+a {
+  &.dark { 
+    color: #333; 
+    &:hover {
+      color: #333 + #222;
+    }
+  }
+}
 
 /* Background colors 
 ==================== */

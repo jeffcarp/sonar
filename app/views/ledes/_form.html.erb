@@ -1,0 +1,29 @@
+<%= form_for(@lede) do |f| %>
+  <% if @lede.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lede.errors.count, "error") %> prohibited this lede from being saved:</h2>
+
+      <ul>
+      <% @lede.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :position %><br />
+    <%= f.text_field :position %>
+  </div>
+  <div class="field">
+    <%= f.label :article_id %><br />
+    <%= f.number_field :article_id %>
+  </div>
+  <div class="field">
+    <%= f.label :special %><br />
+    <%= f.text_field :special %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

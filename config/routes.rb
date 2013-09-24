@@ -1,10 +1,8 @@
 Thecolbyecho::Application.routes.draw do
+
+  resources :ledes
   resources :people
-
-
   resources :photos
-
-
   resources :departments
   resources :articles
   resources :issues
@@ -18,5 +16,5 @@ Thecolbyecho::Application.routes.draw do
   get 'blog'     => 'departments#show', :slug => 'blog'
   get 'about'    => 'departments#show', :slug => 'about'
 
-  root :to => 'articles#index'
+  root :to => 'frontpage#index'
 end
