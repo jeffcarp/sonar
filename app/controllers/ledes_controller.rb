@@ -1,8 +1,9 @@
 class LedesController < ApplicationController
 
   def index
-    @ledes = Lede.all
-    @leader = Lede.where('position=?', 'leader').limit(1).first
+    @leader = Lede.find_or_create_by_position('leader')
+    @primary = Lede.find_or_create_by_position('primary')
+    @secondary = Lede.where('position=?', 'secondary').limit(5)
   end
 
   # GET /ledes/1

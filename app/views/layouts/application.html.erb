@@ -2,59 +2,43 @@
 <html>
 <head>
   <title>The Colby Echo</title>
-  <%
 
-=begin
-echo meta('Content-type', 'text/html; charset=utf-8', 'equiv');
-
-echo link_tag(''.base_url().'public/images/favicon.ico', 'shortcut icon', 'image/ico');
-
-$links = array(
-          'public/css/front-min-3-7.css',
-          'public/css/front_facing/'.$controller.'.css'
-);
-foreach($links as $l):
-	echo link_tag($l);
-endforeach;
-=end
-%>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-
-  <link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  
+  <!-- todo: look into loading at end of page --> 
+  <!--<link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>-->
 </head>
 <body>
   <header>
-    <div class="admin">
-      <div class="wrap pa">
-        <div class="grids">
-          <div class="grid-2">
-            <a href="/ledes" class="pf dib">Front Page</a>
+    <% if current_user %>
+
+      <div class="admin">
+        <div class="wrap pdy">
+          <div class="white sd">
+            <span><%= current_issue.publish_date %> - <%= current_issue.name %></span>
+            <span class="right"><%= link_to "Log out", :logout %></span>
           </div>
-          <div class="grid-2">
-            <a href="/issues?volume=<%= Issue.maximum(:volume) %>" class="pf dib">Issues</a>
-          </div>
-          <div class="grid-2">
-            <a href="/articles" class="pf dib">Depts or Home</a>
-          </div>
-          <div class="grid-2">
-            <a href="/photos" class="pf dib">Photos</a>
-          </div>
-          <div class="grid-2">
-            <a href="/people" class="pf dib">People</a>
-          </div>
-          <div class="grid-2">
-            <a href="" class="pf dib">Jeff Carpenter</a>
-          </div>
+          <a href="/ledes" class="pf dib">Edit Front Page</a>
+          <a href="/issues?volume=<%= Issue.maximum(:volume) %>" class="pf dib">Issues</a>
+          <a href="/articles/new" class="pf dib">New Article</a>
+          <a href="" class="pf dib">Blog</a>
+          <a href="/photos" class="pf dib">Photos</a>
+          <a href="/photos/new" class="pf dib">Upload Photo</a>
+          <a href="/people" class="pf dib">People</a>
+          <a href="" class="pf dib">Jeff Carpenter</a>
         </div>
       </div>
-    </div>
 
-    <div id="top">
-      <a href="/" style="background-image:url('<%= image_path('logo-white.png') %>');" alt="The Colby Echo" title="The Colby Echo" id="logo"></a>
-      <span id="subtitle">Colby College's student run newspaper since 1877</span>
-    </div>
+    <% else %>
+
+      <div id="top" style="display:none;">
+        <a href="/" style="background-image:url('<%= image_path('logo-white.png') %>');" alt="The Colby Echo" title="The Colby Echo" id="logo"></a>
+        <span id="subtitle">Colby College's student run newspaper since 1877</span>
+      </div>
+
+    <% end %>
 
     <div id="nav_wrapper"> <div id="nav">
         <ul id="sections">
@@ -67,11 +51,14 @@ endforeach;
       </div>
     </div>
   </header>
+
   <div id="content" class="<%= params[:controller] %>">
     <div class="wrap">
       <%= yield %>
     </div>
   </div>
+
   <%= render partial: 'layouts/footer' %>
+
 </body>
 </html>

@@ -17,5 +17,8 @@ Thecolbyecho::Application.routes.draw do
   get 'blog'     => 'departments#show', :slug => 'blog'
   get 'about'    => 'departments#show', :slug => 'about'
 
+  # TODO: change when sessions are hooked up
+  get 'logout'   => 'frontpage#index', :slug => 'logout'
+
   root :to => 'frontpage#index'
 end

@@ -40,6 +40,8 @@ aside section {
 ==================== */
 .green { color: green; }
 .dark { color: #333; }
+.white { color: white; }
+.ligrey { color: #bbb; }
 
 /* Link colors 
 ==================== */
@@ -92,6 +94,26 @@ textarea {
   padding: .2em;
   width: 100%;
 }
+
+/* Borders 
+==================== */
+.bad {
+  border: solid 1px #ddd;
+}
+
+/* Font-size 
+==================== */
+.sc { font-size: 12px; }
+.sd { font-size: 14px; }
+.se { font-size: 16px; }
+.sf { font-size: 18px; }
+.sg { font-size: 20px; }
+.si { font-size: 24px; }
+
+/* Floating 
+==================== */
+.right { float: right; }
+.left { float: left; }
 
 /* Spacing Utility 
 ==================== */

@@ -7,6 +7,7 @@ class IssuesController < ApplicationController
       @issues = Issue.order('publish_date DESC')
     end
     @volumes = Issue.uniq.pluck(:volume).sort.reverse
+    #@volumes.map {|v| v[:year_range] = Issue.volume_year_range(v)}
   end
 
   def new

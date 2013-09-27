@@ -1,5 +1,18 @@
 <h1>New photo</h1>
 
-<%= render 'form' %>
+<div class="grids">
+  <div class="grid-8">
 
-<%= link_to 'Back', photos_path %>
+    <%= render 'form' %>
+
+  </div>
+  <div class="grid-4">
+    <aside class="mky">
+
+      <section class="pf mfb">
+        <%= link_to 'Back', photos_path %>
+      </section>
+
+    </aside>
+  </div>
+</div>

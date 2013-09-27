@@ -10,9 +10,9 @@
   <% @current_articles.each do |a| %>
     <div class="grid-4">
       <div class="mob">
-        <% if !a.photos.empty? %>
+        <% if !a.photos.empty? && a.photos.first.image %>
           <a href="/articles/<%= a.id.to_s  %>">
-            <img src="https://s3.amazonaws.com/thecolbyecho/<%= @article.photos.first.id.to_s %>.<%= @article.photos.first.extension %>" class="full" />
+            <%= image_tag a.photos.first.image.url(:medium), class: 'full' %>
           </a>
         <% end %>
         <h3 class="serif mbb"><%= link_to a.headline, a %></h3>

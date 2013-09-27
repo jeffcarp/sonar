@@ -1,4 +1,4 @@
-<h1>Issues</h1>
+<h1>Issues <span class="ligrey fwn pbl">volume <%= params[:volume] %>, 2013 - 2014</span></h1>
 
 <div class="grids">
 
@@ -8,10 +8,10 @@
         <div class="mob">
           <h2><%= issue.name %></h2>
           <% if issue.public %>
-            <div class="bg-green mcy pd fwb">
+            <div class="bg-green mdy pd fwb">
               <span class="dib mfr">public</span>
           <% else %>
-            <div class="bg-orange mcy pd fwb">
+            <div class="bg-orange mdy pd fwb">
               <span class="dib mfr">invisible</span>
           <% end %>
             <span class="dib mfr"><%= link_to 'edit', edit_issue_path(issue) %></span>
@@ -21,9 +21,17 @@
           </div>
           <% if issue.articles.any? %>
             <div class="grids">
-              <% issue.articles.each do |article| %>
+              <% issue.articles.each do |a| %>
                 <div class="grid-3">
-                  <span><%= article.headline %></span>
+                  <div class="mfb pc bad">
+                    <% if !a.photos.empty? && a.photos.first.image %>
+                      <a href="/articles/<%= a.id.to_s  %>" class="db mbb">
+                        <%= image_tag a.photos.first.image.url(:square), class: 'full' %>
+                      </a>
+                    <% end %>
+                    <div class="sc mbb"><%= a.department ? a.department.name : "no department" %></div>
+                    <div><%= link_to a.headline, edit_article_path(a), class: 'sd' %></div>
+                  </div>
                 </div>
               <% end %>
             </div>

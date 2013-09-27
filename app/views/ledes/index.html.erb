@@ -1,6 +1,19 @@
-<h1>Edit Ledes</h1>
+<h1 class="mfb">Edit Ledes</h1>
 
-<% if @leader %>
+<section class="mkb">
+  <h2 class="mcb">Leader (optional)</h2>
+  <h3><%= @leader.article.headline %></h3>
   <%= @leader.article.inspect %>
-  <h1><%= @leader.article.headline %></h1>
-<% end %>
+</section>
+
+<section class="mkb">
+  <h2 class="mcb">Primary</h2>
+  <h3><%= @leader.article.headline %></h3>
+  <%= @leader.article.inspect %>
+</section>
+
+<section class="mkb">
+  <h2 class="mcb">Secondary</h2>
+  <h3><%= @leader.article.headline %></h3>
+  <%= @leader.article.inspect %>
+</section>
