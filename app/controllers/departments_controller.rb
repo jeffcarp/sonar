@@ -1,6 +1,5 @@
 class DepartmentsController < ApplicationController
-  # GET /departments
-  # GET /departments.json
+
   def index
     @departments = Department.all
 
@@ -10,8 +9,6 @@ class DepartmentsController < ApplicationController
     end
   end
 
-  # GET /departments/1
-  # GET /departments/1.json
   def show
     if params[:slug]
       @department = Department.find_by_slug params[:slug]
@@ -20,12 +17,18 @@ class DepartmentsController < ApplicationController
     end
 
     if @department 
-      @issue = Issue.latest_published_issue
-      @current_articles = @department.articles.where('issue_id = ?', @issue.id)
-      @older_articles = @department.articles.where('issue_id = ?', @issue.id)
+      if @department.name.downcase == 'blog'
+        @articles = @department.articles.limit(10)
+        render 'departments/blog' 
+      else
+        @issue = Issue.latest_published_issue
+        @current_articles = @department.articles.where('issue_id = ?', @issue.id)
+        @older_articles = @department.articles.where('issue_id = ?', @issue.id)
+      end
     else
       redirect_to :root 
     end
+
   end
 
   # GET /departments/new
