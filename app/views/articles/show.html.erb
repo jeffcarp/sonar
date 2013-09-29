@@ -15,11 +15,11 @@
       <span>Volume <%= @article.issue.volume %></span>
     </div>
 
-    <% if !@article.photos.empty? %>
+    <% if !@article.photos.empty? && @article.photos.first.image %>
       <div class="image mfb">
-        <img src="https://s3.amazonaws.com/thecolbyecho/<%= @article.photos.first.id.to_s %>.<%= @article.photos.first.extension %>" />
+        <%= image_tag @article.photos.first.image.url(:large), class: 'full' %>
         <% if @article.photos.first.caption %>
-          <div class="caption">
+          <div class="caption pdy">
             <%= @article.photos.first.caption %>
           </div>
         <% end %>
@@ -42,6 +42,8 @@
         <h4>Other articles in this Issue</h4>
         <p>Issue publish date, edition, volume</p>
       </section>
+
+      <!--
       <section class="pf mfb">
         <h4>Articles with these topics</h4>
         <ul>
@@ -61,6 +63,8 @@
           </li>
         </ul>
       </section>
+      -->
+
       <section class="pf mfb">
         <%= link_to "edit this article", edit_article_path(@article) %>
       </section>

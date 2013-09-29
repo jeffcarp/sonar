@@ -9,6 +9,7 @@ class Article < ActiveRecord::Base
   validates_presence_of :deck
   validates_presence_of :copy
   validates_uniqueness_of :slug
+  default_scope order('created_at DESC')
 
   def authors_text
     str = ""

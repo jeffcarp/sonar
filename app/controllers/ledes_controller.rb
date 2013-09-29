@@ -1,7 +1,7 @@
 class LedesController < ApplicationController
 
   def index
-    @leader = Lede.find_or_create_by_position('leader')
+    @breaking = Lede.find_or_create_by_position('breaking')
     @primary = Lede.find_or_create_by_position('primary')
     @secondary = Lede.where('position=?', 'secondary').limit(5)
   end
@@ -49,19 +49,12 @@ class LedesController < ApplicationController
     end
   end
 
-  # PUT /ledes/1
-  # PUT /ledes/1.json
   def update
     @lede = Lede.find(params[:id])
-
-    respond_to do |format|
-      if @lede.update_attributes(params[:lede])
-        format.html { redirect_to @lede, notice: 'Lede was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @lede.errors, status: :unprocessable_entity }
-      end
+    if @lede.update_attributes(params[:lede])
+      redirect_to ledes_url, notice: 'Lede was successfully updated.'
+    else
+      render action: "edit"
     end
   end
 

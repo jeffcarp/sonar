@@ -2,7 +2,7 @@
 <div class="grids pky">
 
   <!-- Huge breaking news -->
-  <% if @breaking %>
+  <% if @breaking.article %>
     <div class="grid-12">
       <div class="ppb">
         <div class="fwb">
@@ -16,47 +16,62 @@
     </div>
   <% end %>
 
-  <!-- Featured articles -->
-  <div class="grid-9">
-
-    <div class="grids">
-
-      <!-- Secondary featured articles -->
-      <div class="grid-4">
-        <% @secondary.each do |l| %>
-          <div class="pdb mdb badb">
-            <div class="fwb pbb">
-              <%= link_to l.article.department.name.upcase, l.article.department %>
-            </div>
-            <h3 class="serif mcb"
-                style="font-size:18px;color:#333;"
-              ><%= link_to l.article.headline, l.article, class: "dark" %></h3>
-          </div>
-        <% end %>
+  <!-- Secondary featured articles -->
+  <div class="grid-3">
+    <% @secondary.each do |l| %>
+      <div class="pdb mdb badb">
+        <div class="fwb pbb">
+          <%= link_to l.article.department.name.upcase, l.article.department %>
+        </div>
+        <h3 class="serif mcb"
+            style="font-size:18px;color:#333;"
+          ><%= link_to l.article.headline, l.article, class: "dark" %></h3>
       </div>
-
-      <!-- Primary featured article -->
-      <div class="grid-8">
-        <% if @primary %>
-          <div class="ppb">
-            <div class="fwb">
-              <%= link_to @primary.article.department.name.upcase, @primary.article.department %>
-            </div>
-            <h1 class="serif mcb"
-                style="font-size:18px;"><%= @primary.article.headline %></h1>
-            <p><%= @primary.article.deck %></p>
-          </div>
-        <% end %>
-      </div>
-
-    </div>
-    
+    <% end %>
   </div>
+
+  <!-- Primary featured article -->
+  <div class="grid-6">
+    <% if @primary %>
+      <div class="ppb">
+        <div class="mdb">
+          <% if !@primary.article.photos.empty? && @primary.article.photos.first.image %>
+            <%= link_to (image_tag @primary.article.photos.first.image.url(:medium), class: 'full'), @primary.article.slug_path %>
+          <% end %>
+        </div>
+        <h1 class="serif mcb si"><%= link_to @primary.article.headline, @primary.article.slug_path, class: 'dark' %></h1>
+        <p><%= @primary.article.deck %></p>
+      </div>
+    <% end %>
+  </div>
+
 
   <div class="grid-3">
     <div class="">
-      <h4>Sidebar</h4>
+      <h4 class="mcb pcb badb">Echoes from the Editors</h4>
+
+      <% @blog_articles.each do |article| %>
+        <div class="pdb mdb badb">
+          <h3 class="serif mcb sd"><%= link_to article.headline, article.slug_path, class: "dark" %></h3>
+          <div class="">
+            <%= article.authors_text %>
+          </div>
+        </div>
+      <% end %>
+      
     </div>
+
+    <!-- Quick links -->
+    <div>
+      <ul>
+        <li><a href="/about">About the <em>Echo</em></a></li>
+        <li><a href="/contact">Contact us</a></li>
+        <li><a href="/about/subscribe">Subscribe to our print edition</a></li>
+        <li><a href="/people"><em>Echo</em> staff</a></li>
+        <li><a href="/about/advertising">Advertising</a></li>
+      </ul>
+    </div>
+
   </div>
 
 </div>

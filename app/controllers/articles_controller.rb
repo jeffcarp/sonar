@@ -21,18 +21,10 @@ class ArticlesController < ApplicationController
     end
   end
 
-  # GET /articles/new
-  # GET /articles/new.json
   def new
     @article = Article.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @article }
-    end
   end
 
-  # GET /articles/1/edit
   def edit
     @article = Article.find(params[:id])
   end

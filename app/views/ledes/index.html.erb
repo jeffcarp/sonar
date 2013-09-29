@@ -1,19 +1,43 @@
 <h1 class="mfb">Edit Ledes</h1>
 
 <section class="mkb">
-  <h2 class="mcb">Leader (optional)</h2>
-  <h3><%= @leader.article.headline %></h3>
-  <%= @leader.article.inspect %>
+  <h2 class="mcb">Breaking (optional)</h2>
+
+  <% if @breaking.article %>
+    <h3><%= @breaking.article.headline %></h3>
+    <%= @breaking.article.inspect %>
+  <% end %>
+
+  <%= form_for(@breaking) do |f| %>
+    <%= f.label :article %>
+    <%= f.collection_select(:article_id, Article.limit(50), :id, :headline, {:include_blank => "None"}) %>
+    <%= f.submit "Save" %>
+  <% end %>
 </section>
 
 <section class="mkb">
   <h2 class="mcb">Primary</h2>
-  <h3><%= @leader.article.headline %></h3>
-  <%= @leader.article.inspect %>
+
+  <h3><%= @primary.article.headline %></h3>
+  <%= @primary.article.inspect %>
+  <%= form_for(@primary) do |f| %>
+    <%= f.label :article %>
+    <%= f.collection_select(:article_id, Article.limit(50), :id, :headline, {}) %>
+    <%= f.submit "Save" %>
+  <% end %>
 </section>
 
-<section class="mkb">
-  <h2 class="mcb">Secondary</h2>
-  <h3><%= @leader.article.headline %></h3>
-  <%= @leader.article.inspect %>
-</section>
+<h2 class="mcb">Secondary</h2>
+
+<% @secondary.each do |lede| %>
+  <section class="mkb">
+    <h2 class="mcb">Primary</h2>
+    <h3><%= lede.article.headline %></h3>
+    <%= lede.article.inspect %>
+    <%= form_for(lede) do |f| %>
+      <%= f.label :article %>
+      <%= f.collection_select(:article_id, Article.limit(50), :id, :headline, {}) %>
+      <%= f.submit "Save" %>
+    <% end %>
+  </section>
+<% end %>
