@@ -18,6 +18,8 @@
             <span class="dib mfr"><%= issue.publish_date %></span>
             <span class="dib mfr">Volume <%= issue.volume %></span>
             <span class="dib mfr">Edition <%= issue.edition %></span>
+            <!-- TODO: make this link work in a nested fashion -->
+            <span class="dib mfr"><%= link_to "New Article", new_article_path %></span>
           </div>
           <% if issue.articles.any? %>
             <div class="grids">

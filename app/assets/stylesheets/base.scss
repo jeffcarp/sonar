@@ -9,7 +9,7 @@
 
 body {
   @include helvetica;
-	background-color: #020c1a;
+	//background-color: #020c1a;
 }
 
 #content {
@@ -218,29 +218,12 @@ header {
 
 
 footer {
-	border-top: solid 2px #bbb;
-	font-size: 12px;
-	color: white;
-  padding: 12px 0 0;
-	line-height: 16px;
-  h3 {
-    color: #eee;
-    font-size: 20px;
-    margin: 0 0 12px;
-  }
-  ul {
-    margin: 0 0 18px;
-    li {
-      margin: 0 0 6px;
-      a {
-        color: #116ce8;
-        font-weight: bold;
-        font-size: 12px;
-        &:hover {
-          border-bottom: dotted 1px #8ab8f6;
-          color: #8ab8f6;
-        }
-      }
+  a {
+    color: #116ce8;
+    font-weight: bold;
+    &:hover {
+      border-bottom: dotted 1px #8ab8f6;
+      color: #8ab8f6;
     }
   }
 }

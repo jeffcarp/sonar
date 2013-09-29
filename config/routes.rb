@@ -5,7 +5,9 @@ Thecolbyecho::Application.routes.draw do
   resources :photos
   resources :departments
   resources :articles
-  resources :issues
+  resources :issues do 
+    resources :articles
+  end
 
   Department.all.each do |dept|
     get dept.slug => 'departments#show', :slug => dept.slug 

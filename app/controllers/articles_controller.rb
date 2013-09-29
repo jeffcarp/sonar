@@ -19,6 +19,10 @@ class ArticlesController < ApplicationController
     else
       @article = Article.find(params[:id])
     end
+
+    if @article.department.slug == 'blog'
+      render template: 'articles/show_blog'
+    end
   end
 
   def new

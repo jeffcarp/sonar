@@ -16,13 +16,12 @@
 
       <div class="admin">
         <div class="wrap pdy">
-          <div class="white sd">
+          <div class="white sd pfx pby">
             <span><%= current_issue.publish_date %> - <%= current_issue.name %></span>
             <span class="right"><%= link_to "Log out", :logout %></span>
           </div>
           <a href="/ledes" class="pf dib">Edit Front Page</a>
           <a href="/issues?volume=<%= Issue.maximum(:volume) %>" class="pf dib">Issues</a>
-          <a href="/articles/new" class="pf dib">New Article</a>
           <a href="" class="pf dib">Blog</a>
           <a href="/photos" class="pf dib">Photos</a>
           <a href="/photos/new" class="pf dib">Upload Photo</a>
@@ -52,13 +51,28 @@
     </div>
   </header>
 
-  <div id="content" class="<%= params[:controller] %>">
+  <div id="content" class="<%= params[:controller] %>" style="min-height: 600px;">
     <div class="wrap">
       <%= yield %>
     </div>
   </div>
 
-  <%= render partial: 'layouts/footer' %>
+  <footer class="pkt">
+    <div class="wrap">
+
+      <ul class="sc">
+        <li class="dib mfr"><a href="/about">About</a></li>
+        <li class="dib mfr"><a href="/people">Team</a></li>
+        <li class="dib mfr"><a href="/blog">Blog</a></li>
+        <li class="dib mfr"><a href="/contact">Contact</a></li>
+        <li class="dib mfr"><a href="/about/subscribe">Subscribe</a></li>
+        <li class="dib mfr"><a href="/about/advertising">Advertising</a></li>
+        <li class="dib mfr"><a href="https://twitter.com/thecolbyecho">@thecolbyecho</a></li>
+        <li class="dib mfr">All Content Copyright <%= Time.new.year %>.</li>
+      </ul>
+
+    </div>
+  </footer>
 
 </body>
 </html>

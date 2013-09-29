@@ -1,5 +1,5 @@
 
-<div class="grids pky">
+<div class="grids pkt pzb">
 
   <!-- Huge breaking news -->
   <% if @breaking.article %>
@@ -54,22 +54,12 @@
         <div class="pdb mdb badb">
           <h3 class="serif mcb sd"><%= link_to article.headline, article.slug_path, class: "dark" %></h3>
           <div class="">
-            <%= article.authors_text %>
+            <%= raw article.authors_text %>
+            <span class="grey"><%= article.created_at.strftime('%b %-d') %></span>
           </div>
         </div>
       <% end %>
       
-    </div>
-
-    <!-- Quick links -->
-    <div>
-      <ul>
-        <li><a href="/about">About the <em>Echo</em></a></li>
-        <li><a href="/contact">Contact us</a></li>
-        <li><a href="/about/subscribe">Subscribe to our print edition</a></li>
-        <li><a href="/people"><em>Echo</em> staff</a></li>
-        <li><a href="/about/advertising">Advertising</a></li>
-      </ul>
     </div>
 
   </div>
