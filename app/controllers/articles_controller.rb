@@ -10,14 +10,14 @@ class ArticlesController < ApplicationController
     end
   end
 
-  # GET /articles/1
-  # GET /articles/1.json
   def show
-    @article = Article.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @article }
+    if params[:slug]
+      @article = Article.find_by_slug(params[:slug])
+      if params[:department] != @article.department.slug
+        redirect_to @article.slug_path
+      end
+    else
+      @article = Article.find(params[:id])
     end
   end
 
@@ -60,7 +60,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.update_attributes(params[:article])
-        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
+        format.html { redirect_to edit_article_path(@article), notice: 'Article was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

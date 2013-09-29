@@ -1,40 +1,49 @@
-<p id="notice"><%= notice %></p>
+<div class="grids pky">
+  <div class="grid-8">
 
-<p>
-  <b>Email:</b>
-  <%= @person.email %>
-</p>
+    <div class="grids">
+      <% @person.articles.each do |a| %>
+        <div class="grid-4 pfb">
+          <%= render :partial => "shared/article_grid", :locals => {:article => a} %> 
+        </div>
+      <% end %>
+    </div>
 
-<p>
-  <b>Photo:</b>
-  <%= @person.photo_id %>
-</p>
+  </div>
+  <div class="grid-4">
 
-<p>
-  <b>Name:</b>
-  <%= @person.name %>
-</p>
+    <!-- TODO: their photo -->
+    <!-- Profile picture -->
+    <div class="mfb">
+      <img src="http://placekitten.com/400/300" class="full" />
+    </div>
 
-<p>
-  <b>Slug:</b>
-  <%= @person.slug %>
-</p>
+    <!-- Basic information -->
+    <div class="mfb">
+      <div class="si serif mcb">
+        <%= @person.name %>
+      </div>
 
-<p>
-  <b>Position:</b>
-  <%= @person.position %>
-</p>
+      <% if @person.year %>
+        <div>Class of <%= @person.year %></div>  
+      <% end %>
 
-<p>
-  <b>Year:</b>
-  <%= @person.year %>
-</p>
+      <% if @person.position %>
+        <div><%= @person.position %></div>  
+      <% end %>
 
-<p>
-  <b>Bio:</b>
-  <%= @person.bio %>
-</p>
+      <% if @person.bio %>
+        <div><%= @person.bio %></div>  
+      <% end %>
+
+      <% if current_user %>
+        <div class="pkt">
+          <%= link_to 'Edit', edit_person_path(@person) %>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>
 
 
-<%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Back', people_path %>

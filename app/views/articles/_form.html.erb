@@ -1,118 +1,126 @@
 
-<div class="grids">
+<%= form_for(@article) do |f| %>
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
 
-  <div class="grid-6">
-    <div class="mky">
+      <ul>
+      <% @article.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-      <%= form_for(@article) do |f| %>
-        <% if @article.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+  <div class="grids">
 
-            <ul>
-            <% @article.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-            </ul>
+    <div class="grid-6">
+      <div class="mky">
+
+
+          <div class="mfb">
+            <%= f.label :headline %>
+            <%= f.text_field :headline,
+                  class: 'sg',
+                  placeholder: 'Headline' %>
           </div>
+
+          <!-- TODO: auto generate this based on title and don't make it editable initially -->
+          <div class="mfb">
+            <%= f.label :slug %>
+            <div>
+              <%= @article.slug %>
+              <div>edit</div>
+            </div>
+            <%= f.text_field :slug, class: 'hidden' %>
+          </div>
+
+          <div class="mfb">
+            <%= f.label "Authors" %>
+            <div class="mcb">
+              <%= @article.authors_text %>
+            </div>
+            <%= f.collection_select(:person_ids, Person.all, :id, :name, {}, { :multiple => true } ) %>
+          </div>
+
+          <div class="mfb">
+            <%= f.label :bigphoto %>
+            <%= f.check_box :bigphoto %>
+          </div>
+
+          <div class="mfb">
+            <%= f.label :issue %>
+            <%= f.collection_select :issue_id, Issue.all, :id, :name %>
+          </div>
+
+          <div class="mfb">
+            <%= f.label :department %>
+            <%= f.collection_select :department_id, Department.all, :id, :name %>
+          </div>
+
+          <div class="actions">
+            <%= f.label :deck %>
+            <%= f.text_area :deck %>
+          </div>
+
+          <div class="actions">
+            <%= f.label :copy %>
+            <%= f.text_area :copy %>
+          </div>
+
+          <div class="actions">
+          </div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+    </div>
+
+    <div class="grid-4">
+      <aside class="mky">
+
+        <section class="pf mfb">
+          <!-- TODO: saved/unsaved pops up when editing -->
+          <%= f.submit %>
+        </section>
+
+        <section class="pf mfb">
+          <!-- TODO: public/invisible -->
+            <%= f.label :public %>
+            <%= f.check_box :public %>
+        </section>
+
+        <% if @article.id && @article.public %>
+          <section class="pf mfb">
+            <h4 class="mdb">View on website:</h4>
+            <%= link_to request.env["HTTP_HOST"]+@article.slug_path, @article.slug_path %>
+          </section>
         <% end %>
 
-        <div class="mfb">
-          <%= f.label :headline %>
-          <%= f.text_field :headline,
-                class: 'sg',
-                placeholder: 'Headline' %>
-        </div>
+        <h3 class="mdb">Photos</h3>
 
-        <!-- TODO: auto generate this based on title and don't make it editable initially -->
-        <div class="mfb">
-          <%= f.label :slug %>
-          <%= f.text_field :slug %>
-        </div>
+        <% @article.photos.each do |p| %>
+          <section class="pf mfb">
+            <div>
+              <%= image_tag p.image.url(:medium), class: 'full' %>
+            </div>
+            <div>
+              <div><%= p.caption %></div>
+            </div>
+            <div>
+              <%= link_to "Edit photo", edit_photo_path(p) %>
+            </div>
+          </section>
+        <% end %>
 
-        <div class="mfb">
-          <%= f.label :public %>
-          <%= f.check_box :public %>
-        </div>
+        <section class="pf mfb">
+          <h4 class="mdb">Add photo</h4>
+          <!-- TODO: build out -->
+        </section>
 
-        <div class="mfb">
-          <%= f.label :bigphoto %>
-          <%= f.check_box :bigphoto %>
-        </div>
-
-        <div class="mfb">
-          <%= f.label :issue %>
-          <%= f.collection_select :issue_id, Issue.all, :id, :name %>
-        </div>
-
-        <div class="mfb">
-          <%= f.label :department %>
-          <%= f.collection_select :department_id, Department.all, :id, :name %>
-        </div>
-
-        <div class="actions">
-          <%= f.label :deck %>
-          <%= f.text_area :deck %>
-        </div>
-
-        <div class="actions">
-          <%= f.label :copy %>
-          <%= f.text_area :copy %>
-        </div>
-
-        <div class="actions">
-          <%= f.submit %>
-        </div>
-      <% end %>
+      </aside>
     </div>
+
   </div>
 
-  <div class="grid-2">
-  </div>
-
-  <div class="grid-4">
-    <aside class="mky">
-
-      <section class="pf mfb">
-        <!-- TODO: saved/unsaved pops up when editing -->
-      </section>
-
-      <section class="pf mfb">
-        <!-- TODO: public/invisible -->
-      </section>
-
-      <% if @article.id && @article.public %>
-        <section class="pf mfb">
-          <h4 class="mdb">View on website:</h4>
-          <%= link_to article_url(@article), @article %>
-        </section>
-      <% end %>
-
-      <h3 class="mdb">Photos</h3>
-
-      <% @article.photos.each do |p| %>
-        <section class="pf mfb">
-          
-          <%= p.inspect %>
-          <div>
-            <%= image_tag p.image.url(:medium), class: 'full' %>
-          </div>
-          <div>
-            <div><%= p.caption %></div>
-          </div>
-          <div>
-            <%= link_to "Edit photo", edit_photo_path(p) %>
-          </div>
-        </section>
-
-      <% end %>
-
-      <section class="pf mfb">
-        <h4 class="mdb">Add photo</h4>
-        <!-- TODO: build out -->
-      </section>
-
-    </aside>
-  </div>
-
-</div>
+<% end %>
