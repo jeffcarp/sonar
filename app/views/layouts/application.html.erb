@@ -27,13 +27,13 @@
           <a href="/photos" class="pf dib">Photos</a>
           <a href="/photos/new" class="pf dib">Upload Photo</a>
           <a href="/people" class="pf dib">People</a>
-          <a href="" class="pf dib">Jeff Carpenter</a>
+          <%= link_to current_user.name, edit_person_path(current_user), class: 'pf dib' %>
         </div>
       </div>
 
     <% else %>
 
-      <div id="top" style="display:none;">
+      <div id="top">
         <a href="/" style="background-image:url('<%= image_path('logo-white.png') %>');" alt="The Colby Echo" title="The Colby Echo" id="logo"></a>
         <span id="subtitle">Colby College's student run newspaper since 1877</span>
       </div>

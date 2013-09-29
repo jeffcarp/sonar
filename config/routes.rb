@@ -13,7 +13,9 @@ Thecolbyecho::Application.routes.draw do
   end
 
   # TODO: change when sessions are hooked up
-  get 'logout'   => 'frontpage#index', :slug => 'logout'
+  get 'sonar' => 'sessions#create', :slug => 'sonar'
+  get 'logout'   => 'sessions#destroy', :slug => 'logout'
+
 
   root :to => 'frontpage#index'
 end

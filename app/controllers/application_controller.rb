@@ -6,8 +6,7 @@ class ApplicationController < ActionController::Base
   private
 
   def current_user 
-    # @current_user ||= User.find(cookies.signed[:user_id]) if cookies.signed[:user_id]
-    {name: "dude"}
+    @current_user ||= Person.find(cookies.signed[:person_id]) if cookies.signed[:person_id]
   end
 
   def current_issue
