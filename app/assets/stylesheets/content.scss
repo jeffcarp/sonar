@@ -81,8 +81,8 @@ a {
 ==================== */
 
 label {
-  font-size: 14px;
-  margin: 0 0 .2em;
+  font-size: 16px;
+  margin: 0 0 0.5em;
   display: block;
 }
 
@@ -90,8 +90,7 @@ input[type="text"],
 input[type="email"],
 input[type="password"],
 textarea { 
-  font-size: 14px;
-  padding: .2em;
+  padding: 0.2em;
   width: 100%;
 }
 
