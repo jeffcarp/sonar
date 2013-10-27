@@ -1,5 +1,5 @@
 class Article < ActiveRecord::Base
-  attr_accessible :headline, :deck, :copy, :slug, :public, :bigphoto, :issue_id, :department_id, :person_ids
+  attr_accessible :headline, :deck, :copy, :slug, :public, :bigphoto, :issue_id, :department_id, :person_ids, :new_photo_id
   belongs_to :department
   belongs_to :issue
   has_many :ledes
@@ -29,6 +29,13 @@ class Article < ActiveRecord::Base
   def slug_path
    path = '/'+self.department.slug 
    path +='/'+self.slug
+  end
+
+  def new_photo_id; end;
+  def new_photo_id=(id)
+    if photo = Photo.find(id)
+      self.photos << photo
+    end
   end
 
 end

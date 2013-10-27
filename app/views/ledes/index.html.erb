@@ -1,43 +1,38 @@
 <h1 class="mfb">Edit Ledes</h1>
 
-<section class="mkb">
-  <h2 class="mcb">Breaking (optional)</h2>
+<div class="grids">
+  <div class="grid-6 pub">
 
-  <% if @breaking.article %>
-    <h3><%= @breaking.article.headline %></h3>
-    <%= @breaking.article.inspect %>
-  <% end %>
+    <h2 class="mcb">Breaking <span class="ligrey fwn">(optional)</span></h2>
 
-  <%= form_for(@breaking) do |f| %>
-    <%= f.label :article %>
-    <%= f.collection_select(:article_id, Article.limit(50), :id, :headline, {:include_blank => "None"}) %>
-    <%= f.submit "Save" %>
-  <% end %>
-</section>
+    <%= form_for(@breaking) do |f| %>
+      <%= f.collection_select(:article_id, Article.limit(50), :id, :headline, {:include_blank => "None"}) %>
+      <%= f.submit "Save" %>
+    <% end %>
 
-<section class="mkb">
-  <h2 class="mcb">Primary</h2>
+  </div>
+  <div class="grid-6 pub">
 
-  <h3><%= @primary.article.headline %></h3>
-  <%= @primary.article.inspect %>
-  <%= form_for(@primary) do |f| %>
-    <%= f.label :article %>
-    <%= f.collection_select(:article_id, Article.limit(50), :id, :headline, {}) %>
-    <%= f.submit "Save" %>
-  <% end %>
-</section>
-
-<h2 class="mcb">Secondary</h2>
-
-<% @secondary.each do |lede| %>
-  <section class="mkb">
     <h2 class="mcb">Primary</h2>
-    <h3><%= lede.article.headline %></h3>
-    <%= lede.article.inspect %>
-    <%= form_for(lede) do |f| %>
-      <%= f.label :article %>
+
+    <%= form_for(@primary) do |f| %>
       <%= f.collection_select(:article_id, Article.limit(50), :id, :headline, {}) %>
       <%= f.submit "Save" %>
     <% end %>
-  </section>
-<% end %>
+
+  </div>
+
+  <% @secondary.each_with_index do |lede, i| %>
+    <div class="grid-6 pub">
+      <h2 class="mcb">Secondary <%= i+1 %></h2>
+      <%= form_for(lede) do |f| %>
+        <%= f.collection_select(:article_id, Article.limit(50), :id, :headline, {}) %>
+        <%= f.submit "Save" %>
+      <% end %>
+    </div>
+  <% end %>
+
+</div>
+
+
+

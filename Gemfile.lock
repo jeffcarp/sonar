@@ -47,6 +47,7 @@ GEM
     coffee-script-source (1.6.3)
     erubis (2.7.0)
     execjs (2.0.0)
+    fungible-rails (0.0.6)
     hike (1.2.3)
     i18n (0.6.5)
     journey (1.0.4)
@@ -120,6 +121,7 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk
   coffee-rails (~> 3.2.1)
+  fungible-rails (~> 0.0.6)
   jquery-rails
   paperclip
   pg

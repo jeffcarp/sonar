@@ -8,7 +8,7 @@
 
     <div class="info">
       <span><strong><%= link_to @article.department.name, '/'+@article.department.slug %></strong></span>
-      <span>by <%= raw @article.authors_text %></span>
+      <span><%= raw @article.authors_text %></span>
       <span>Issue <%= @article.issue.name %></span>
       <span>Edition <%= @article.issue.edition %></span>
       <span>Volume <%= @article.issue.volume %></span>
